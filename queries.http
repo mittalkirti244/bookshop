@@ -1,0 +1,22 @@
+GET http://localhost:4004/catalog/Books
+
+###
+GET http://localhost:4004/catalog/Authors
+
+###
+POST http://localhost:4004/catalog/Books
+Content-Type: application/json
+
+{
+    "ID":10,
+    "title":"Kirti"
+}
+
+###
+POST http://localhost:4004/catalog/Orders
+Content-Type: application/json
+
+{
+    "book_ID":421,
+    "quantity":10
+}

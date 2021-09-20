@@ -1,0 +1,14 @@
+GET http://localhost:4004/catalog/Authors?$expand=books
+
+###
+
+GET http://localhost:4004/catalog/Books?$expand=author
+
+###
+POST http://localhost:4004/catalog/Authors
+Content-Type: application/json
+
+{
+    "ID":1020,
+    "name":"Kirti Mittal"
+}
