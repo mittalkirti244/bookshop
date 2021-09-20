@@ -1,6 +1,6 @@
 using from '../srv/catalog-service';
 using from '@sap/cds/common';
-using from '../app/bookshop/annotations';
+using from './booksannotations';
 
 
 annotate CatalogService.Authors with @odata.draft.enabled; 
