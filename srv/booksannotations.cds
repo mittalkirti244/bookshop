@@ -22,7 +22,7 @@ annotate CatalogService.Books with @(
         TypeName: '{i18n>Book}',
         TypeNamePlural: '{i18n>Books List}',
         Title: {Value: ID},
-       // Description: {Value: author.name}
+        Description: {Value: author.name}
         },
 
         HeaderFacets : [
