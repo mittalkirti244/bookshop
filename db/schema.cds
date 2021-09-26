@@ -1,20 +1,21 @@
 namespace my.bookshop;
-using { Country,cuid, managed,sap} from '@sap/cds/common';
+using { Country,cuid,sap,Language} from '@sap/cds/common';
 
 @cds.search : {title,author}
-entity Books:cuid,managed{
+entity Books:cuid{
     key ID: UUID @odata.Type:'Edm.String';
     title : String; 
     stock : Integer @assert.range: [ 1,500];
-    author : Association to Authors;
     level: Integer;
+    language: Language;
+    author : Association to Authors;
     genre: Association to Genres;
-    lang: String;
+    order: Association to Orders;
+    country: Country;
     image: LargeBinary @Core.MediaType: imageType;
     imageType : String @Core.IsMediaType: true;
 } 
 
-//@cds.search :{name}
 entity Authors{
     key ID : UUID @odata.Type:'Edm.String';
     name: String;
@@ -31,4 +32,11 @@ entity Genres:sap.common.CodeList{
                      on children.parent = $self;
 }
 
+entity Orders{
+    key orderID: UUID @odata.Type:'Edm.String';
+    name : String;
+    noOfBooks: Integer;
+    book : Association to Books;
+    myBookName: String;
+}
 

@@ -17,8 +17,8 @@
     "sqltools.connections": [
         {
             "dialect": "SQLite",
-            "database": "/home/user/projects/bookshop/bookshop.db",
-            "name": "My Bookshop SQLite"
+            "name": "MyBookshop",
+            "database": "/home/user/projects/bookshop/bookshop.db"
         }
     ]
 }

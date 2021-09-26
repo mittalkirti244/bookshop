@@ -12,11 +12,3 @@ Content-Type: application/json
     "title":"Kirti"
 }
 
-###
-POST http://localhost:4004/catalog/Orders
-Content-Type: application/json
-
-{
-    "book_ID":421,
-    "quantity":10
-}
