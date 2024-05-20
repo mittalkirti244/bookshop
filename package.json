@@ -1,66 +1,72 @@
 {
-    "name": "bookshop",
-    "version": "1.0.0",
-    "description": "A simple CAP project.",
-    "repository": "<Add your repository here>",
-    "license": "UNLICENSED",
-    "private": true,
-    "dependencies": {
-        "@sap/cds": "^5",
-        "express": "^4",
-        "hdb": "^0.18.3"
+  "name": "bookshop",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap/cds": "^6",
+    "@sap/cds-hana": "^2",
+    "express": "^4",
+    "hdb": "^0.18.3"
+  },
+  "devDependencies": {
+    "@sap/hdi-deploy": "^5.1.1",
+    "@sap/ux-specification": "^1.120.10",
+    "sqlite3": "^5.1.7"
+  },
+  "engines": {
+    "node": "^18"
+  },
+  "scripts": {
+    "start": "cds run",
+    "watch-bookstore": "cds watch --open bookstore/webapp/index.html#fe-lrop-v4",
+    "watch-bookshop": "cds watch --open bookshop/webapp/index.html#fe-lrop-v4"
+  },
+  "eslintConfig": {
+    "extends": "eslint:recommended",
+    "env": {
+      "es2020": true,
+      "node": true,
+      "jest": true,
+      "mocha": true
     },
-    "devDependencies": {
-        "@sap/hdi-deploy": "^4.2.0",
-        "@sap/ux-specification": "^1.90.8",
-        "sqlite3": "^5.0.2"
+    "globals": {
+      "SELECT": true,
+      "INSERT": true,
+      "UPDATE": true,
+      "DELETE": true,
+      "CREATE": true,
+      "DROP": true,
+      "CDL": true,
+      "CQL": true,
+      "CXL": true,
+      "cds": true
     },
-    "scripts": {
-        "start": "cds run",
-        "watch-bookstore": "cds watch --open bookstore/webapp/index.html#fe-lrop-v4",
-        "watch-bookshop": "cds watch --open bookshop/webapp/index.html#fe-lrop-v4"
-    },
-    "eslintConfig": {
-        "extends": "eslint:recommended",
-        "env": {
-            "es2020": true,
-            "node": true,
-            "jest": true,
-            "mocha": true
+    "rules": {
+      "no-console": "off",
+      "require-atomic-updates": "off"
+    }
+  },
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "sqlite",
+        "model": "*",
+        "[production]": {
+          "kind": "hana"
         },
-        "globals": {
-            "SELECT": true,
-            "INSERT": true,
-            "UPDATE": true,
-            "DELETE": true,
-            "CREATE": true,
-            "DROP": true,
-            "CDL": true,
-            "CQL": true,
-            "CXL": true,
-            "cds": true
-        },
-        "rules": {
-            "no-console": "off",
-            "require-atomic-updates": "off"
+        "credentials": {
+          "database": "bookshop.db"
         }
+      }
     },
-    "cds": {
-        "requires": {
-            "db": {
-                "kind": "sql",
-                "model": "*",
-                "credentials": {
-                    "database": "bookshop.db"
-                }
-            }
-        },
-        "hana": {
-            "deploy-format": "hdbtable"
-        }
-    },
-    "sapux": [
-        "app/bookstore",
-        "app/bookshop"
-    ]
+    "hana": {
+      "deploy-format": "hdbtable"
+    }
+  },
+  "sapux": [
+    "app/bookshop"
+  ]
 }
